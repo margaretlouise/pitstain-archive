@@ -1,7 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nunito+Sans&display=swap');
+
 html {
-  background-color: lavenderblush;
+  background-color: black;
 }
 
+body {
+  color: tan;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+h1 {
+  color: tan;
+  font-family: 'Lexend Mega', sans-serif;
+}
+
+ul li{
+  padding: .5rem;
+  display: inline;
+  list-style-type: none;
+}
+
+a:link {
+  color: tan;
+  text-decoration: none;
+}
+
+a:visited {
+  color: tan;
+  text-decoration: none;
+}
+
+a:hover {
+  color: hotpink;
+  text-decoration: none;
+}
+
+a:active {
+  color: red;
+  text-decoration: underline;
+}
+
+/* 
 #root {
   max-width: 1200px;
   margin: 0 auto;
@@ -27,4 +66,4 @@ html {
   .card {
     flex: 1 1 calc(33% - 2rem);
   }
-}
+} */

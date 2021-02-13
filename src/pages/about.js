@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-export default function Filters() {
+export default function About() {
 	return (
 		<div>
 			 <Link to="/">Home</Link>

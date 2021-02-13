@@ -1,7 +1,9 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 
-import Filter from "../components/filter";
+import Header from "../components/header";
+import Menu from "../components/menu";
+import Filters from "../components/filters";
 import Photos from "../components/photos";
 
 export default function Home({ data }) {
@@ -22,9 +24,9 @@ export default function Home({ data }) {
 
   return (
     <div>
-      <h1>{data.site.siteMetadata.title}</h1>
-      <Link to="/about/">About</Link>
-      <Filter tags={[...tags]} />
+      <Header title={data.site.siteMetadata.title} />
+      <Menu />
+      <Filters tags={[...tags]} />
       <Photos />
     </div>
   )
