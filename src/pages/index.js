@@ -1,7 +1,8 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import Filter from "../components/filter"
+import Filter from "../components/filter";
+import Photos from "../components/photos";
 
 export default function Home({ data }) {
   const photoData = data.allFlickrPhoto.edges;
@@ -24,13 +25,7 @@ export default function Home({ data }) {
       <h1>{data.site.siteMetadata.title}</h1>
       <Link to="/about/">About</Link>
       <Filter tags={[...tags]} />
-      {photoData && photoData.map((photo) => {
-        return (
-          <div key={photo.node.id}>
-            <img src={photo.node.url_m}></img>
-          </div>
-        );
-      })}
+      <Photos />
     </div>
   )
 }
