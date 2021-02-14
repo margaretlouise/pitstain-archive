@@ -1,9 +1,9 @@
 import React from "react";
-import filterStyles from "./filter-buttons.module.css";
+import filterStyles from "./filters.module.css";
 
 const FilterButton = props => (
   <span key={props.tag}>
-    <button className={filterStyles.button} onClick={() => {props.onClick()}}>{props.title}</button>
+    <button className={filterStyles.btn} onClick={() => {props.onClick()}}>{props.title}</button>
   </span>
 );
 
@@ -14,7 +14,7 @@ export default function Filters(props) {
   }
 
   return (
-    <div>
+    <div className={filterStyles.wrapper}>
       {props.tags.length > 0 && props.tags.map((tag) => {
         return (
           <FilterButton 

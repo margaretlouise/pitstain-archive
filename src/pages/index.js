@@ -15,7 +15,7 @@ export default function Home({ data }) {
       const splitTags = photo.node.tags.split(' ');
 
       splitTags.map((tag) => {
-        tags.add(tag);
+        return tags.add(tag);
       })
     }
 
@@ -27,7 +27,7 @@ export default function Home({ data }) {
       <Header title={data.site.siteMetadata.title} />
       <Menu />
       <Filters tags={[...tags]} />
-      <Photos />
+      <Photos photos={photoData}/>
     </div>
   )
 }

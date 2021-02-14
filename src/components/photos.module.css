@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: .5rem;
+}
+
+.photo {
+  margin: 1rem;
+  flex: 25%;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .photo {
+    flex: 30%;
+  }
+}
+
+@media (max-width: 500px) {
+  .photo {
+    flex: 100%;
+  }
+}

@@ -1,0 +1,31 @@
+.menu {
+  justify-content: center;
+  display: flex;
+  padding: 0;
+}
+
+.menuItem {
+  padding: .5rem;
+  display: inline;
+  list-style-type: none;
+}
+
+a:link {
+  color: tan;
+  text-decoration: none;
+}
+
+a:visited {
+  color: tan;
+  text-decoration: none;
+}
+
+a:hover {
+  color: hotpink;
+  text-decoration: none;
+}
+
+a:active {
+  color: red;
+  text-decoration: none;
+}

@@ -1,11 +1,23 @@
 import React from "react"
-import { Link } from "gatsby"
 
-export default function About() {
+import Header from "../components/header";
+import Menu from "../components/menu";
+
+export default function About({ data }) {
 	return (
 		<div>
-			 <Link to="/">Home</Link>
-			<h1>About Pitstain Archive</h1>
+			<Header title={data.site.siteMetadata.title} />
+      <Menu />
 		</div>
 	)
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`

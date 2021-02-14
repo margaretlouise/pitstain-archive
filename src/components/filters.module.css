@@ -1,0 +1,36 @@
+.wrapper {
+  margin: 0 0 2rem 2rem;
+}
+
+.btn {
+  color: tan;
+  font-family: 'Lexend Mega', sans-serif;  
+  background-color: black;
+  border: 2px solid tan;
+  box-shadow: -6px 6px 0 tan;
+
+  position: relative;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  margin: 0 2rem 1rem 0;
+  padding: .5rem 1rem;
+
+  transition: all .15s linear 0s;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:hover {
+  cursor: pointer;
+  top: 6px;
+  left: -6px;
+  box-shadow: 0 0 0 tan;
+}
+  
+.btn:active {
+  color: black;
+  background-color: tan;
+}

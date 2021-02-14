@@ -2,6 +2,8 @@
 
 html {
   background-color: black;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 body {
@@ -12,58 +14,5 @@ body {
 h1 {
   color: tan;
   font-family: 'Lexend Mega', sans-serif;
+  text-align: center;
 }
-
-ul li{
-  padding: .5rem;
-  display: inline;
-  list-style-type: none;
-}
-
-a:link {
-  color: tan;
-  text-decoration: none;
-}
-
-a:visited {
-  color: tan;
-  text-decoration: none;
-}
-
-a:hover {
-  color: hotpink;
-  text-decoration: none;
-}
-
-a:active {
-  color: red;
-  text-decoration: underline;
-}
-
-/* 
-#root {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.card {
-  margin: 1rem;
-  border: 1px solid gray;
-}
-
-@media screen and (min-width: 600px) {
-  .card {
-    flex: 1 1 calc(50% - 2rem);
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .card {
-    flex: 1 1 calc(33% - 2rem);
-  }
-} */
