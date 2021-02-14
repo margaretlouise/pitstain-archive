@@ -3,12 +3,17 @@ import { Link } from "gatsby";
 
 import menuStyles from "./menu.module.css";
 
-export default function Menu(props) {
+export default function Menu() {
+
+  const activeStyle = {
+    textDecoration: "underline",
+  }
+
 	return (
 		<ul className={menuStyles.menu}>
-      <li className={menuStyles.menuItem}><Link to="/">Collection</Link></li>
-      <li className={menuStyles.menuItem}><Link to="/shop/">Shop</Link></li>
-      <li className={menuStyles.menuItem}><Link to="/about/">About</Link></li>
+      <li className={menuStyles.menuItem}><Link activeStyle={activeStyle} to="/">Collection</Link></li>
+      <li className={menuStyles.menuItem}><Link activeStyle={activeStyle} to="/shop/">Shop</Link></li>
+      <li className={menuStyles.menuItem}><Link activeStyle={activeStyle} to="/about/">About</Link></li>
 		</ul>
 	);
 }

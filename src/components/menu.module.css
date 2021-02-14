@@ -24,8 +24,3 @@ a:hover {
   color: hotpink;
   text-decoration: none;
 }
-
-a:active {
-  color: red;
-  text-decoration: none;
-}
