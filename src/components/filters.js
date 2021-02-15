@@ -1,28 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import filterStyles from "./filters.module.css";
 
-const FilterButton = props => (
-  <span key={props.tag}>
-    <button className={filterStyles.btn} onClick={() => {props.onClick()}}>{props.title}</button>
-  </span>
-);
-
 export default function Filters(props) {
-  
-  const handleAlert = (tag) => {
-    console.log('clicked it', tag)
+  const [activeFilters, setActiveFilters] = useState([]);
+
+  const handleRemoveActiveTag = (tag) => {
+    setActiveFilters(activeFilters.filter(e => e !== tag))
   }
 
   return (
     <div className={filterStyles.wrapper}>
       {props.tags.length > 0 && props.tags.map((tag) => {
-        return (
-          <FilterButton 
-            key={tag} 
-            onClick={() => {handleAlert(tag)}}
-            title={tag}
-          />
-        );
+        if (activeFilters.indexOf(tag) !== -1) {
+          return (
+            <span key={tag}>
+              <button className={filterStyles.btnActive} onClick={() => handleRemoveActiveTag(tag)}>{tag}</button>
+            </span>
+          );
+        } else {
+          return (
+            <span key={tag}>
+              <button className={filterStyles.btn} onClick={() => setActiveFilters(activeFilters.concat(tag))}>{tag}</button>
+            </span>
+          );
+        }
       })}
     </div>
   );

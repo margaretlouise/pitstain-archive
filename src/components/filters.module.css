@@ -29,7 +29,25 @@
   left: -6px;
   box-shadow: 0 0 0 tan;
 }
-  
+
+.btnActive {
+  cursor: pointer;
+  outline: none;
+  color: black;
+  font-family: 'Lexend Mega', sans-serif;  
+  background-color: tan;
+  border: 2px solid tan;
+
+  position: relative;
+  display: inline-block;
+  top: 6px;
+  left: -6px;
+  margin: 0 2rem 1rem 0;
+  padding: .5rem 1rem;
+
+  transition: all .15s linear 0s;
+}
+
 .btn:active {
   color: black;
   background-color: tan;
