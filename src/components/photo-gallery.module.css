@@ -48,6 +48,11 @@
   transition: all .15s linear 0s;
 }
 
+.btnActive::before {
+  font-weight: 900;
+  content: "╳ "
+}
+
 .btn:active {
   color: black;
   background-color: tan;

@@ -9,6 +9,11 @@
   flex: 25%;
 }
 
+h3.error {
+  text-align: center;
+  color: tomato;
+}
+
 img {
   max-width: 100%;
 }

@@ -31472,71 +31472,6 @@ module.exports = str => encodeURIComponent(str).replace(/[!'()*]/g, x => `%${x.c
 
 /***/ }),
 
-/***/ "./src/components/filters.js":
-/*!***********************************!*\
-  !*** ./src/components/filters.js ***!
-  \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Filters; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _filters_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filters.module.css */ "./src/components/filters.module.css");
-/* harmony import */ var _filters_module_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_filters_module_css__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function Filters(props) {
-  const {
-    0: activeFilters,
-    1: setActiveFilters
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
-
-  const handleRemoveActiveTag = tag => {
-    console.log('remove', tag);
-  };
-
-  console.log(activeFilters);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: _filters_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.wrapper
-  }, props.tags.length > 0 && props.tags.map(tag => {
-    if (activeFilters.indexOf(tag) !== -1) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        key: tag
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: _filters_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.btnActive,
-        onClick: () => handleRemoveActiveTag(console.log('remove tag'))
-      }, tag));
-    } else {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        key: tag
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: _filters_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.btn,
-        onClick: () => setActiveFilters(activeFilters.concat(tag))
-      }, tag));
-    }
-  }));
-}
-
-/***/ }),
-
-/***/ "./src/components/filters.module.css":
-/*!*******************************************!*\
-  !*** ./src/components/filters.module.css ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"wrapper": "filters-module--wrapper--1OJJC",
-	"btn": "filters-module--btn--1crzW",
-	"btnActive": "filters-module--btnActive--3HZ0t"
-};
-
-/***/ }),
-
 /***/ "./src/components/header.js":
 /*!**********************************!*\
   !*** ./src/components/header.js ***!
@@ -31614,6 +31549,104 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./src/components/photo-gallery.js":
+/*!*****************************************!*\
+  !*** ./src/components/photo-gallery.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PhotoGallery; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./photo-gallery.module.css */ "./src/components/photo-gallery.module.css");
+/* harmony import */ var _photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_photos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/photos */ "./src/components/photos.js");
+
+
+
+function PhotoGallery(props) {
+  const {
+    0: activeFilters,
+    1: setActiveFilters
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const {
+    0: photoSet,
+    1: setPhotoSet
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.photos);
+  const {
+    0: justRemovedFilter,
+    1: setJustRemovedFilter
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  const handleAddFilter = tag => {
+    setActiveFilters(activeFilters.concat(tag));
+    setPhotoSet(photoSet.filter(photo => photo.node.tags.includes(tag)));
+  };
+
+  const handleRemoveFilter = tag => {
+    setActiveFilters(activeFilters.filter(t => t !== tag));
+    setJustRemovedFilter(true);
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    setJustRemovedFilter(false);
+    props.photos.map(photo => {
+      const tags = photo.node.tags;
+      let updatedPhotoSet = [];
+
+      if (activeFilters.every(tag => tags.includes(tag))) {
+        return updatedPhotoSet.push(photo);
+      }
+
+      console.log(activeFilters);
+      console.log(updatedPhotoSet);
+      setPhotoSet(updatedPhotoSet);
+    });
+  }, [justRemovedFilter]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: _photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.wrapper
+  }, props.tags.length > 0 && props.tags.map(tag => {
+    if (activeFilters.indexOf(tag) !== -1) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        key: tag
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: _photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.btnActive,
+        onClick: () => handleRemoveFilter(tag)
+      }, tag));
+    } else {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        key: tag
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: _photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.btn,
+        onClick: () => handleAddFilter(tag)
+      }, tag));
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_photos__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    photos: photoSet
+  }));
+}
+;
+
+/***/ }),
+
+/***/ "./src/components/photo-gallery.module.css":
+/*!*************************************************!*\
+  !*** ./src/components/photo-gallery.module.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+	"wrapper": "photo-gallery-module--wrapper--1tOje",
+	"btn": "photo-gallery-module--btn--2yRIa",
+	"btnActive": "photo-gallery-module--btnActive--3wBhG"
+};
+
+/***/ }),
+
 /***/ "./src/components/photos.js":
 /*!**********************************!*\
   !*** ./src/components/photos.js ***!
@@ -31631,9 +31664,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Photos(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.photos.length === 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: _photos_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.error
+  }, "Dang, no photos match your search criteria. Try removing a filter."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: _photos_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.container
-  }, props.photos && props.photos.map(photo => {
+  }, props.photos.length > 0 && props.photos.map(photo => {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: _photos_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.photo,
       key: photo.node.id
@@ -31641,8 +31676,9 @@ function Photos(props) {
       src: photo.node.url_m,
       alt: photo.title
     }));
-  }));
+  })));
 }
+;
 
 /***/ }),
 
@@ -31655,7 +31691,8 @@ function Photos(props) {
 
 module.exports = {
 	"container": "photos-module--container--2Ynuc",
-	"photo": "photos-module--photo--2lCrw"
+	"photo": "photos-module--photo--2lCrw",
+	"error": "photos-module--error--CxI7R"
 };
 
 /***/ }),
@@ -31695,9 +31732,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/header */ "./src/components/header.js");
 /* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/menu */ "./src/components/menu.js");
-/* harmony import */ var _components_filters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/filters */ "./src/components/filters.js");
-/* harmony import */ var _components_photos__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/photos */ "./src/components/photos.js");
-
+/* harmony import */ var _components_photo_gallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/photo-gallery */ "./src/components/photo-gallery.js");
 
 
 
@@ -31719,9 +31754,8 @@ function Home({
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
     title: data.site.siteMetadata.title
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    tags: [...tags]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_photos__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_photo_gallery__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    tags: [...tags],
     photos: photoData
   }));
 }

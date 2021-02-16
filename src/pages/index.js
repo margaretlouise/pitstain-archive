@@ -3,8 +3,7 @@ import { graphql } from "gatsby";
 
 import Header from "../components/header";
 import Menu from "../components/menu";
-import Filters from "../components/filters";
-import Photos from "../components/photos";
+import PhotoGallery from "../components/photo-gallery";
 
 export default function Home({ data }) {
   const photoData = data.allFlickrPhoto.edges;
@@ -26,8 +25,7 @@ export default function Home({ data }) {
     <div>
       <Header title={data.site.siteMetadata.title} />
       <Menu />
-      <Filters tags={[...tags]} />
-      <Photos photos={photoData}/>
+      <PhotoGallery tags={[...tags]} photos={photoData}/>
     </div>
   )
 }
