@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Header from "../components/header";
-import Menu from "../components/menu";
 import PhotoGallery from "../components/photo-gallery";
 
 export default function Home({ data }) {
@@ -24,7 +23,6 @@ export default function Home({ data }) {
   return (
     <div>
       <Header title={data.site.siteMetadata.title} />
-      <Menu />
       <PhotoGallery tags={[...tags]} photos={photoData}/>
     </div>
   )

@@ -31484,67 +31484,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Header; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
+/* harmony import */ var _header_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./header.module.css */ "./src/components/header.module.css");
+/* harmony import */ var _header_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_header_module_css__WEBPACK_IMPORTED_MODULE_2__);
+
+
 
 function Header(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.title));
-}
-
-/***/ }),
-
-/***/ "./src/components/menu.js":
-/*!********************************!*\
-  !*** ./src/components/menu.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Menu; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
-/* harmony import */ var _menu_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu.module.css */ "./src/components/menu.module.css");
-/* harmony import */ var _menu_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_menu_module_css__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-function Menu() {
   const activeStyle = {
     textDecoration: "underline"
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: _menu_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menu
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menu
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: _menu_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
+    className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     activeStyle: activeStyle,
     to: "/"
   }, "Collection")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: _menu_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
+    className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     activeStyle: activeStyle,
     to: "/shop/"
   }, "Shop")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: _menu_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
+    className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     activeStyle: activeStyle,
     to: "/about/"
-  }, "About")));
+  }, "About"))));
 }
 
 /***/ }),
 
-/***/ "./src/components/menu.module.css":
-/*!****************************************!*\
-  !*** ./src/components/menu.module.css ***!
-  \****************************************/
+/***/ "./src/components/header.module.css":
+/*!******************************************!*\
+  !*** ./src/components/header.module.css ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 module.exports = {
-	"menu": "menu-module--menu--2N3du",
-	"menuItem": "menu-module--menuItem--2jLNV"
+	"menu": "header-module--menu--3bKjy",
+	"menuItem": "header-module--menuItem--12za2"
 };
 
 /***/ }),
@@ -31576,10 +31557,6 @@ function PhotoGallery(props) {
     0: photoSet,
     1: setPhotoSet
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.photos);
-  const {
-    0: justRemovedFilter,
-    1: setJustRemovedFilter
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
 
   const handleAddFilter = tag => {
     setActiveFilters(activeFilters.concat(tag));
@@ -31588,24 +31565,32 @@ function PhotoGallery(props) {
 
   const handleRemoveFilter = tag => {
     setActiveFilters(activeFilters.filter(t => t !== tag));
-    setJustRemovedFilter(true);
-  };
+    updatePhotoSet();
+  }; // agh need this to run *AFTER* activeFilters is updated in state.
+  // this isn't working, because when it runs as is, active Filters
+  // are still set to what they were before the handleRemoveFilter
+  // click.
+  // wanted to use useEffect, but couldn't figure out how to get that
+  // to run *only* when a filter is removed, i had it watching for
+  // updates to activeFilters, but that would also update it if a 
+  // filter was added. we don't need to do this eleborate of a
+  // photoset construction when we are adding filters, only when
+  // we remove them.
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    setJustRemovedFilter(false);
+
+  const updatePhotoSet = () => {
     props.photos.map(photo => {
       const tags = photo.node.tags;
       let updatedPhotoSet = [];
 
       if (activeFilters.every(tag => tags.includes(tag))) {
-        return updatedPhotoSet.push(photo);
+        updatedPhotoSet.push(photo);
       }
 
-      console.log(activeFilters);
-      console.log(updatedPhotoSet);
-      setPhotoSet(updatedPhotoSet);
+      return updatedPhotoSet;
     });
-  }, [justRemovedFilter]);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: _photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.wrapper
   }, props.tags.length > 0 && props.tags.map(tag => {
@@ -31731,9 +31716,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/header */ "./src/components/header.js");
-/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/menu */ "./src/components/menu.js");
-/* harmony import */ var _components_photo_gallery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/photo-gallery */ "./src/components/photo-gallery.js");
-
+/* harmony import */ var _components_photo_gallery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/photo-gallery */ "./src/components/photo-gallery.js");
 
 
 
@@ -31754,7 +31737,7 @@ function Home({
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
     title: data.site.siteMetadata.title
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_menu__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_photo_gallery__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_photo_gallery__WEBPACK_IMPORTED_MODULE_2__["default"], {
     tags: [...tags],
     photos: photoData
   }));
