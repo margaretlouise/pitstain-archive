@@ -3,11 +3,11 @@
 }
 
 .btn {
-  color: tan;
+  color: black;
   font-family: 'Lexend Mega', sans-serif;  
-  background-color: black;
-  border: 2px solid tan;
-  box-shadow: -6px 6px 0 tan;
+  background-color: white;
+  border: 2px solid black;
+  box-shadow: -6px 6px 0 black;
 
   position: relative;
   display: inline-block;
@@ -27,16 +27,16 @@
   cursor: pointer;
   top: 6px;
   left: -6px;
-  box-shadow: 0 0 0 tan;
+  box-shadow: 0 0 0 black;
 }
 
 .btnActive {
   cursor: pointer;
   outline: none;
-  color: black;
+  color: white;
   font-family: 'Lexend Mega', sans-serif;  
-  background-color: tan;
-  border: 2px solid tan;
+  background-color: black;
+  border: none;
 
   position: relative;
   display: inline-block;
@@ -49,11 +49,10 @@
 }
 
 .btnActive::before {
-  font-weight: 900;
   content: "╳ "
 }
 
 .btn:active {
-  color: black;
-  background-color: tan;
+  color: white;
+  background-color: black;
 }

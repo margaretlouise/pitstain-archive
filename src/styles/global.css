@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nunito+Sans&display=swap');
 
 html {
-  background-color: black;
+  background-color: white;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 body {
-  color: tan;
+  color: black;
 	font-family: 'Nunito Sans', sans-serif;
 }
 
 h1 {
-  color: tan;
+  font-size: 4rem;
+  margin-bottom: 0;
+  color: black;
   font-family: 'Lexend Mega', sans-serif;
   text-align: center;
 }

@@ -31491,25 +31491,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Header(props) {
-  const activeStyle = {
-    textDecoration: "underline"
-  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menu
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    activeStyle: activeStyle,
+    activeClassName: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.activeStyle,
     to: "/"
-  }, "Collection")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "Pitstain Archive")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    activeStyle: activeStyle,
+    activeClassName: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.activeStyle,
     to: "/shop/"
   }, "Shop")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    activeStyle: activeStyle,
+    activeClassName: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.activeStyle,
     to: "/about/"
   }, "About"))));
 }
@@ -31525,7 +31522,8 @@ function Header(props) {
 
 module.exports = {
 	"menu": "header-module--menu--3bKjy",
-	"menuItem": "header-module--menuItem--12za2"
+	"menuItem": "header-module--menuItem--12za2",
+	"activeStyle": "header-module--activeStyle--3XCBS"
 };
 
 /***/ }),

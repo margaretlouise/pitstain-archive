@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Pitstain Archive",
+    title: "Rotational Weight",
   },
   plugins: [
     "gatsby-plugin-sharp",
