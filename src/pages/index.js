@@ -8,7 +8,7 @@ export default function Home({ data }) {
   const photoData = data.allFlickrPhoto.edges;
 
   let tags = new Set();
-  const findAllTags = photoData && photoData.map((photo) => {
+  photoData.forEach((photo) => {
     if (photo.node.tags) {
       const splitTags = photo.node.tags.split(' ');
 

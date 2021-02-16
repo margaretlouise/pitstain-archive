@@ -31558,37 +31558,28 @@ function PhotoGallery(props) {
 
   const handleAddFilter = tag => {
     setActiveFilters(activeFilters.concat(tag));
-    setPhotoSet(photoSet.filter(photo => photo.node.tags.includes(tag)));
   };
 
   const handleRemoveFilter = tag => {
     setActiveFilters(activeFilters.filter(t => t !== tag));
-    updatePhotoSet();
-  }; // agh need this to run *AFTER* activeFilters is updated in state.
-  // this isn't working, because when it runs as is, active Filters
-  // are still set to what they were before the handleRemoveFilter
-  // click.
-  // wanted to use useEffect, but couldn't figure out how to get that
-  // to run *only* when a filter is removed, i had it watching for
-  // updates to activeFilters, but that would also update it if a 
-  // filter was added. we don't need to do this eleborate of a
-  // photoset construction when we are adding filters, only when
-  // we remove them.
-
-
-  const updatePhotoSet = () => {
-    props.photos.map(photo => {
-      const tags = photo.node.tags;
-      let updatedPhotoSet = [];
-
-      if (activeFilters.every(tag => tags.includes(tag))) {
-        updatedPhotoSet.push(photo);
-      }
-
-      return updatedPhotoSet;
-    });
   };
 
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (activeFilters.length === 0) {
+      setPhotoSet(props.photos);
+    } else {
+      let updatedPhotoSet = [];
+      props.photos.map(photo => {
+        const tags = photo.node.tags;
+
+        if (activeFilters.every(tag => tags.includes(tag))) {
+          updatedPhotoSet.push(photo);
+        }
+
+        return setPhotoSet(updatedPhotoSet);
+      });
+    }
+  }, [activeFilters]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: _photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.wrapper
   }, props.tags.length > 0 && props.tags.map(tag => {
@@ -31723,7 +31714,7 @@ function Home({
 }) {
   const photoData = data.allFlickrPhoto.edges;
   let tags = new Set();
-  const findAllTags = photoData && photoData.map(photo => {
+  photoData.forEach(photo => {
     if (photo.node.tags) {
       const splitTags = photo.node.tags.split(' ');
       splitTags.map(tag => {
@@ -31736,7 +31727,7 @@ function Home({
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
     title: data.site.siteMetadata.title
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_photo_gallery__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    tags: () => findAllTags(),
+    tags: [...tags],
     photos: photoData
   }));
 }
