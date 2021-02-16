@@ -31736,7 +31736,7 @@ function Home({
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
     title: data.site.siteMetadata.title
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_photo_gallery__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    tags: [...tags],
+    tags: () => findAllTags(),
     photos: photoData
   }));
 }

@@ -18,6 +18,12 @@ export default function PhotoGallery(props) {
     updatePhotoSet();
   }; 
 
+  useEffect(() => {
+    if (activeFilters.length === 0) {
+      setPhotoSet(props.photos);
+    }
+  }, [activeFilters]);
+
   // agh need this to run *AFTER* activeFilters is updated in state.
   // this isn't working, because when it runs as is, active Filters
   // are still set to what they were before the handleRemoveFilter
