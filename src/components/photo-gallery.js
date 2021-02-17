@@ -32,7 +32,7 @@ export default function PhotoGallery(props) {
         return setPhotoSet(updatedPhotoSet);
       })    
     }
-  }, [activeFilters]);
+  }, [activeFilters, props.photos]);
 
   return (
     <div>

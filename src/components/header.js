@@ -8,7 +8,8 @@ export default function Header(props) {
 		<div>
 			<h1>{props.title}</h1>
 			<ul className={headerStyles.menu}>
-				<li className={headerStyles.menuItem}><Link activeClassName={headerStyles.activeStyle} to="/">Pitstain Archive</Link></li>
+				<li className={headerStyles.menuItem}><Link activeClassName={headerStyles.activeStyle} to="/">Home</Link></li>
+				<li className={headerStyles.menuItem}><Link activeClassName={headerStyles.activeStyle} to="/pitstain-archive/">Pitstain Archive</Link></li>
 				<li className={headerStyles.menuItem}><Link activeClassName={headerStyles.activeStyle} to="/shop/">Shop</Link></li>
 				<li className={headerStyles.menuItem}><Link activeClassName={headerStyles.activeStyle} to="/about/">About</Link></li>
 			</ul>

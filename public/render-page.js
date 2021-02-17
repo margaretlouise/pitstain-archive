@@ -111,7 +111,8 @@ const { hot } = __webpack_require__(/*! react-hot-loader/root */ "./node_modules
 exports.ssrComponents = {
   "component---cache-dev-404-page-js": hot(preferDefault(__webpack_require__(/*! ./.cache/dev-404-page.js */ "./.cache/dev-404-page.js"))),
   "component---src-pages-404-js": hot(preferDefault(__webpack_require__(/*! ./src/pages/404.js */ "./src/pages/404.js"))),
-  "component---src-pages-index-js": hot(preferDefault(__webpack_require__(/*! ./src/pages/index.js */ "./src/pages/index.js")))
+  "component---src-pages-index-js": hot(preferDefault(__webpack_require__(/*! ./src/pages/index.js */ "./src/pages/index.js"))),
+  "component---src-pages-pitstain-archive-js": hot(preferDefault(__webpack_require__(/*! ./src/pages/pitstain-archive.js */ "./src/pages/pitstain-archive.js")))
   }
 
 
@@ -31498,6 +31499,11 @@ function Header(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     activeClassName: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.activeStyle,
     to: "/"
+  }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    activeClassName: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.activeStyle,
+    to: "/pitstain-archive/"
   }, "Pitstain Archive")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: _header_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.menuItem
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(gatsby__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -31579,7 +31585,7 @@ function PhotoGallery(props) {
         return setPhotoSet(updatedPhotoSet);
       });
     }
-  }, [activeFilters]);
+  }, [activeFilters, props.photos]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: _photo_gallery_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.wrapper
   }, props.tags.length > 0 && props.tags.map(tag => {
@@ -31705,11 +31711,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/header */ "./src/components/header.js");
+
+
+function Home({
+  data
+}) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    title: data.site.siteMetadata.title
+  }));
+}
+const query = "3159585216";
+
+/***/ }),
+
+/***/ "./src/pages/pitstain-archive.js":
+/*!***************************************!*\
+  !*** ./src/pages/pitstain-archive.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PitstainArchive; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/header */ "./src/components/header.js");
 /* harmony import */ var _components_photo_gallery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/photo-gallery */ "./src/components/photo-gallery.js");
 
 
 
-function Home({
+function PitstainArchive({
   data
 }) {
   const photoData = data.allFlickrPhoto.edges;
