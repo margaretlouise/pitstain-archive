@@ -56,3 +56,30 @@
   color: white;
   background-color: black;
 }
+
+@media (max-width: 500px) {
+  .wrapper {
+    margin: 1rem 1rem 0rem 1rem;
+  }
+
+  .btn {
+    border: 1px solid black;
+    box-shadow: -3px 3px 0 black;
+    margin: 0 1rem .5rem 0;
+    padding: .25rem .5rem;
+  }
+
+  .btn:hover {
+    top: 3px;
+    left: -3px;
+    box-shadow: 0 0 0 black;
+  }
+
+  .btnActive {
+    top: 3px;
+    left: -3px;
+    margin: 0 1rem .5rem 0;
+    padding: .25rem .5rem;  
+  }
+
+}

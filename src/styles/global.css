@@ -18,3 +18,9 @@ h1 {
   font-family: 'Lexend Mega', sans-serif;
   text-align: center;
 }
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2rem;
+  }
+}

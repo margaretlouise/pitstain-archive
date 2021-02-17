@@ -29,3 +29,20 @@ a:hover {
 .activeStyle {
   border-bottom: 4px solid tomato;
 }
+
+@media (max-width: 500px) {
+  .menu {
+    display: block;
+  }
+
+  .menuItem {
+    font-size: 1rem;
+    padding: .25rem;
+    display: block;
+    text-align: center;
+  }
+
+  .activeStyle {
+    border-bottom: 2px solid tomato;
+  }
+}

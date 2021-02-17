@@ -9,6 +9,9 @@
 }
 
 h3.error {
+  max-width: 365px;
+  margin-right: auto;
+  margin-left: auto;
   text-align: center;
   color: tomato;
 }
